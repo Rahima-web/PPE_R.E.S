@@ -34,6 +34,14 @@ def readData(file):
 GDP_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP.csv")
 print (GDP_histo)
 
+lesx=data['x']
+lesy=data['y']
+plt.figure(1)
+plt.plot(lesx,lesy,color='r', linestyle='',marker='o')
+plt.title('fonction des x et y')
+plt.xlabel("x")
+plt.ylabel("y")
+plt.axis([0,2.5,0,25]) 
 #Fonctions 
 
 class Household:
