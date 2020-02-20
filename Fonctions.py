@@ -6,3 +6,20 @@ Created on Thu Feb 20 09:08:58 2020
 @author: HOAREAU.LyseMay
 """
 
+#Constants
+
+theta1 = 4200
+theta2 = 0.11
+theta3 = 37
+gamma = 0.35
+S_F = 0.74
+rho_G_1 = 0.06
+rho_G_2 = -0.027
+rho_B_1 = 0.023
+rho_B_2 = -0.02
+phi1 = 283
+phi2 = 8.6
+Rs = 2.90
+a1 = 0.79
+a2 = 0.01
+
