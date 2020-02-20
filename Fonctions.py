@@ -23,6 +23,8 @@ Rs = 2.90
 a1 = 0.79
 a2 = 0.01
 
+#Fonctions 
+
 class Household:
     
     def Wages(self, GDP):
