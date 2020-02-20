@@ -46,6 +46,6 @@ class Bank:
     def Bank_Bond_Price(self, B_B_ICPF, B_B_ROW, b_B):
         return (B_B_ICPF + B_B_ROW) / b_B
     
-    def Interest_rate_BB(self, i_BG):
+    def Interest_rate_BB(self, i_BG,B_B_ICPF, B_B_ROW, b_B):
         return rho_B_1 + i_BG + rho_B_2 * Bank.Bank_Bond_Price(self,B_B_ICPF, B_B_ROW, b_B)
     
