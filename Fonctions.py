@@ -8,8 +8,6 @@ Created on Thu Feb 20 09:08:58 2020
 
 import numpy  as np
 import pandas as pd
-import io
-import requests
 #Constants
 
 theta1 = 4200
@@ -33,8 +31,8 @@ def readData(file):
     df = pd.DataFrame(data)
     return(df)
 
-data = readData("/Users/rahimamohamed/Documents/GitHub/PPE_R.E.S/Data_GDP.csv")
-print (readData())
+data = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP.csv")
+print (data)
 #Fonctions 
 
 class Household:
