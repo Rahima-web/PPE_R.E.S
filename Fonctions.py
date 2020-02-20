@@ -6,6 +6,9 @@ Created on Thu Feb 20 09:08:58 2020
 @author: HOAREAU.LyseMay
 """
 
+import numpy  as np
+import pandas as pds
+
 #Constants
 
 theta1 = 4200
@@ -22,6 +25,9 @@ phi2 = 8.6
 Rs = 2.90
 a1 = 0.79
 a2 = 0.01
+
+#Read Data
+
 
 #Fonctions 
 
