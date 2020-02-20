@@ -10,6 +10,7 @@ import numpy  as np
 import pandas as pd
 import seaborn as sns
 from datetime import datetime
+
 #Constants
 
 theta1 = 4200
