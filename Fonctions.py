@@ -32,8 +32,8 @@ def readData(file):
     df = pd.DataFrame(data)
     return(df)
 
-data = readData("/Users/rahimamohamed/Documents/GitHub/PPE_R.E.S/GDP.csv")
-
+data = readData("/Users/rahimamohamed/Documents/GitHub/PPE_R.E.S/Data_GDP.csv")
+print (data)
 #Fonctions 
 
 class Household:
