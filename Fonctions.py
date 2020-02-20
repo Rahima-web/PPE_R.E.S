@@ -25,6 +25,8 @@ a2 = 0.01
 
 #Fonctions 
 
+
+
 class Household:
     
     def Wages(self, GDP):
