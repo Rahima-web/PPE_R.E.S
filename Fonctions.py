@@ -29,9 +29,9 @@ a2 = 0.01
 
 #Read Data
 def readData(file):
-    data = pd.read_csv(file,sep=",",header=0)
+    df = pd.read_csv(file,sep=",",header=0)
     #df['Années'] = [datetime.strptime(x, '%Y') for x in df['Années']]
-    df = pd.DataFrame(data)
+    #df = pd.DataFrame(data)
     df = df.set_index('Années')
     return(df)
 
