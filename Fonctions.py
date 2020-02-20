@@ -5,7 +5,7 @@ Created on Thu Feb 20 09:08:58 2020
 
 @author: HOAREAU.LyseMay
 """
-
+import matplotlib.pyplot as plt
 import numpy  as np
 import pandas as pd
 #Constants
@@ -27,21 +27,20 @@ a2 = 0.01
 
 #Read Data
 def readData(file):
-    data = pd.read_csv(file,delim_whitespace=False,dtype = {'col1': np.float, 'col2': np.float})
+    data = pd.read_csv(file,delim_whitespace=False,dtype = {'col1': np.float, 'col2': np.float)
     df = pd.DataFrame(data)
     return(df)
 
 GDP_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP.csv")
 print (GDP_histo)
 
-lesx=data['x']
-lesy=data['y']
+
 plt.figure(1)
-plt.plot(lesx,lesy,color='r', linestyle='',marker='o')
+plt.plot(GDP_histo['Années'][20:25],GDP_histo['Valeurs'][20:25],color='r')
 plt.title('fonction des x et y')
 plt.xlabel("x")
 plt.ylabel("y")
-plt.axis([0,2.5,0,25]) 
+
 #Fonctions 
 
 class Household:
