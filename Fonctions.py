@@ -34,6 +34,7 @@ def readData(file):
     return(df)
 
 data = readData("/Users/rahimamohamed/Documents/GitHub/PPE_R.E.S/Data_GDP.csv")
+print(data)
 #Fonctions 
 
 class Household:
