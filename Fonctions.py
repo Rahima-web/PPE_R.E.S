@@ -8,6 +8,8 @@ Created on Thu Feb 20 09:08:58 2020
 import matplotlib.pyplot as plt
 import numpy  as np
 import pandas as pd
+import seaborn as sns
+from datetime import datetime
 #Constants
 
 theta1 = 4200
@@ -27,22 +29,20 @@ a2 = 0.01
 
 #Read Data
 def readData(file):
-    data = pd.read_csv(file,delim_whitespace=False,dtype = {'col1': np.float, 'col2': np.float)
+    data = pd.read_csv(file,sep=",",header=0)
+    #df['Années'] = [datetime.strptime(x, '%Y') for x in df['Années']]
     df = pd.DataFrame(data)
+    df = df.set_index('Années')
     return(df)
 
 GDP_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP.csv")
 print (GDP_histo)
 
+sns.lineplot(data = GDP_histo['Valeurs'])
 
-plt.figure(1)
-plt.plot(GDP_histo['Années'][20:25],GDP_histo['Valeurs'][20:25],color='r')
-plt.title('fonction des x et y')
-plt.xlabel("x")
-plt.ylabel("y")
 
 #Fonctions 
-
+"""
 class Household:
     
     def Wages(self, GDP):
@@ -69,4 +69,4 @@ class Bank:
     
     def Interest_rate_BB(self, i_BG,B_B_ICPF, B_B_ROW, b_B):
         return rho_B_1 + i_BG + rho_B_2 * Bank.Bank_Bond_Price(self,B_B_ICPF, B_B_ROW, b_B)
-    
+"""    
