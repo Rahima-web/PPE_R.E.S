@@ -31,13 +31,9 @@ def readData(file):
     df = pd.DataFrame(data)
     return(df)
 
-<<<<<<< HEAD
-data = readData("/Users/rahimamohamed/Documents/GitHub/PPE_R.E.S/Data_GDP.csv")
-print(data)
-=======
 data = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP.csv")
 print (data)
->>>>>>> 6cfa95d8f8f685a57b4c81f8718756e5be59f310
+
 #Fonctions 
 
 class Household:
