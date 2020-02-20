@@ -7,7 +7,7 @@ Created on Thu Feb 20 09:08:58 2020
 """
 
 import numpy  as np
-import pandas as pds
+import pandas as pd
 
 #Constants
 
@@ -27,7 +27,12 @@ a1 = 0.79
 a2 = 0.01
 
 #Read Data
+def readData(file):
+    data = pd.read_csv(file,delim_whitespace=True,names = ["x","y"],dtype = {'col1': np.float, 'col2': np.float})
+    df = pd.DataFrame(data)
+    return(df)
 
+data = readData("/Users/rahimamohamed/Documents/GitHub/PPE_R.E.S/GDP.csv")
 
 #Fonctions 
 
