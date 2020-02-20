@@ -31,8 +31,8 @@ def readData(file):
     df = pd.DataFrame(data)
     return(df)
 
-data = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP.csv")
-print (data)
+GDP_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP.csv")
+print (GDP_histo)
 
 #Fonctions 
 
