@@ -38,8 +38,8 @@ def readData(file):
 
 GDP_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP.csv")
 print (GDP_histo)
-
-sns.lineplot(data = GDP_histo['Valeurs'])
+a=GDP_histo['Valeurs']
+sns.lineplot(data = a)
 
 
 #Fonctions 
