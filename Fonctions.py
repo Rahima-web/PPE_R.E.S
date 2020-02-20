@@ -8,8 +8,6 @@ Created on Thu Feb 20 09:08:58 2020
 
 import numpy  as np
 import pandas as pd
-import io
-import requests
 #Constants
 
 theta1 = 4200
