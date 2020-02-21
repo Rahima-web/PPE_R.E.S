@@ -8,9 +8,10 @@ Created on Thu Feb 20 09:08:58 2020
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+from datetime import datetime
 
 #Constants
-
+"""
 theta1 = 4200
 theta2 = 0.11
 theta3 = 37
@@ -25,33 +26,41 @@ phi2 = 8.6
 Rs = 2.90
 a1 = 0.79
 a2 = 0.01
-
+"""
 #Read Data
 
-def readData(file):
+def readData_years(file):
     df = pd.read_csv(file,sep=",",header=0)
     df = df.set_index('Years')
     return(df)
     
-GDP_Export_Import_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP_Export_Import.csv")
-sns.lineplot(data = GDP_Export_Import_histo)
-plt.figure()
-
-Inflation_IRBank_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation_TI.csv")
-sns.lineplot(data = Inflation_IRBank_histo)
-plt.figure()
-
-GovSpending_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Govspending.csv")
-sns.lineplot(data = GovSpending_histo)
-plt.figure()
-
-HouseHoldTaxes_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_HouseHoldTaxes.csv")
-sns.lineplot(data = HouseHoldTaxes_histo)
-plt.figure()
-
-#Stock_OBLF_histo = readData("")
-#sns.lineplot(data = Stock_OBLF_histo)
+def readData_all(file):
+    df = pd.read_csv(file,sep=",",header=0)
+    df['Years']=[datetime.strptime(x, '%d/%m/%Y') for x in df['Years']]
+    df = df.set_index('Years')
+    return(df)
+    
+#GDP_Export_Import_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP_Export_Import.csv")
+#sns.lineplot(data = GDP_Export_Import_histo)
 #plt.figure()
+#
+#Inflation_IRBank_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation_TI.csv")
+#sns.lineplot(data = Inflation_IRBank_histo)
+#plt.figure()
+#
+#GovSpending_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Govspending.csv")
+#sns.lineplot(data = GovSpending_histo)
+#plt.figure()
+#
+#HouseHoldTaxes_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_HouseHoldTaxes.csv")
+#sns.lineplot(data = HouseHoldTaxes_histo)
+#plt.figure()
+
+DTI_histo = readData_all("https://github.com/Rahima-web/PPE_R.E.S/blob/master/Data_DTI.csv")
+sns.lineplot(data = DTI_histo)
+plt.figure()
+
+
     
 #Fonctions 
 """
