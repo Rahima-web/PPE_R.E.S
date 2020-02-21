@@ -36,10 +36,11 @@ def readData(file):
     df = df.set_index('Years')
     return(df)
     
-GDP_Export_Import_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP_Export_Import.csv")
-sns.lineplot(data = GDP_Export_Import_histo)
+#GDP_Export_Import_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP_Export_Import.csv")
+#sns.lineplot(data = GDP_Export_Import_histo)
 
 Inflation_IR_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation_Taux%20d'interet.csv")
+print(Inflation_IR_histo)
 sns.lineplot(data = Inflation_IR_histo)
     
 
