@@ -40,23 +40,23 @@ def readData_all(file):
     df = df.set_index('Years')
     return(df)
     
-#GDP_Export_Import_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP_Export_Import.csv")
-#sns.lineplot(data = GDP_Export_Import_histo)
-#plt.figure()
-#
-#Inflation_IRBank_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation_TI.csv")
-#sns.lineplot(data = Inflation_IRBank_histo)
-#plt.figure()
-#
-#GovSpending_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Govspending.csv")
-#sns.lineplot(data = GovSpending_histo)
-#plt.figure()
-#
-#HouseHoldTaxes_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_HouseHoldTaxes.csv")
-#sns.lineplot(data = HouseHoldTaxes_histo)
-#plt.figure()
+GDP_Export_Import_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP_Export_Import.csv")
+sns.lineplot(data = GDP_Export_Import_histo)
+plt.figure()
 
-DTI_histo = readData_all("https://github.com/Rahima-web/PPE_R.E.S/blob/master/Data_DTI.csv")
+Inflation_IRBank_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation_TI.csv")
+sns.lineplot(data = Inflation_IRBank_histo)
+plt.figure()
+
+GovSpending_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Govspending.csv")
+sns.lineplot(data = GovSpending_histo)
+plt.figure()
+
+HouseHoldTaxes_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_HouseHoldTaxes.csv")
+sns.lineplot(data = HouseHoldTaxes_histo)
+plt.figure()
+
+DTI_histo = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_DTI.csv")
 sns.lineplot(data = DTI_histo)
 plt.figure()
 
