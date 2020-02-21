@@ -29,10 +29,9 @@ a1 = 0.79
 a2 = 0.01
 
 #Read Data
+
 def readData(file):
     df = pd.read_csv(file,sep=",",header=0)
-    #df['Années'] = [datetime.strptime(x, '%Y') for x in df['Années']]
-    #df = pd.DataFrame(data)
     df = df.set_index('Years')
     return(df)
     
@@ -40,7 +39,6 @@ GDP_Export_Import_histo = readData("https://raw.githubusercontent.com/Rahima-web
 sns.lineplot(data = GDP_Export_Import_histo)
 
 Inflation_IR_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation_TI.csv")
-print(Inflation_IR_histo)
 sns.lineplot(data = Inflation_IR_histo)
     
 #Fonctions 
