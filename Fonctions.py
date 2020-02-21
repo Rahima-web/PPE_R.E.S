@@ -37,10 +37,10 @@ def readData(file):
     return(df)
 
 GDP_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP.csv")
-print (GDP_histo)
-a=GDP_histo['Valeurs']
-sns.lineplot(data = a)
+sns.lineplot(data = GDP_histo['Valeurs'])
 
+Export_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Exportation.csv")
+sns.lineplot(data = Export_histo['Valeurs'])
 
 #Fonctions 
 """
