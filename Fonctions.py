@@ -43,7 +43,6 @@ Inflation_IR_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_
 print(Inflation_IR_histo)
 sns.lineplot(data = Inflation_IR_histo)
     
-
 #Fonctions 
 """
 class Household:
