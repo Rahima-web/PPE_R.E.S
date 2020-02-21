@@ -33,23 +33,15 @@ def readData(file):
     df = pd.read_csv(file,sep=",",header=0)
     #df['Années'] = [datetime.strptime(x, '%Y') for x in df['Années']]
     #df = pd.DataFrame(data)
-    df = df.set_index('Années')
+    df = df.set_index('Years')
     return(df)
     
-GDP_Export_Import_histo = readData("")
+GDP_Export_Import_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP_Export_Import.csv")
 sns.lineplot(data = GDP_Export_Import_histo)
 
-Inflation_IR_histo = readData("")
+Inflation_IR_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation_Taux%20d'interet.csv")
 sns.lineplot(data = Inflation_IR_histo)
     
-#GDP_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP.csv")
-#sns.lineplot(hue="coherence",data = GDP_histo)
-#
-#Export_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Exportation.csv")
-#sns.lineplot(hue="coherence",data = Export_histo)
-#
-#Import_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Importation.csv")
-#sns.lineplot(data = Import_histo['Valeurs'])
 
 #Fonctions 
 """
