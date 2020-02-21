@@ -6,10 +6,8 @@ Created on Thu Feb 20 09:08:58 2020
 @author: HOAREAU.LyseMay
 """
 import matplotlib.pyplot as plt
-import numpy  as np
 import pandas as pd
 import seaborn as sns
-from datetime import datetime
 
 #Constants
 
@@ -37,9 +35,11 @@ def readData(file):
     
 GDP_Export_Import_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP_Export_Import.csv")
 sns.lineplot(data = GDP_Export_Import_histo)
+plt.figure()
 
 Inflation_IR_histo = readData("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation_TI.csv")
 sns.lineplot(data = Inflation_IR_histo)
+plt.figure()
     
 #Fonctions 
 """
