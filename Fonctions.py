@@ -69,7 +69,19 @@ sns.lineplot(data = Mort_Rep_histo)
 plt.figure()
 
 Mortgages_histo = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Mortgages.csv")
-sns.lineplot(data = Mort_Rep_histo)
+sns.lineplot(data = Mortgages_histo)
+plt.figure()
+
+Firms_taxes_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Firms%20taxes.csv")
+sns.lineplot(data = Firms_taxes_histo)
+plt.figure()
+
+Household_Tax_Rate_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Household_Tax_Rate.csv")
+sns.lineplot(data = Household_Tax_Rate_histo)
+plt.figure()
+
+Deposits_Households_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Deposits%20for%20households.csv")
+sns.lineplot(data = Deposits_Households_histo)
 plt.figure()
     
 #Fonctions 
