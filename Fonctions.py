@@ -104,6 +104,10 @@ LTV_histo = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S
 sns.lineplot(data = LTV_histo)
 plt.figure()
 
+Housing_Stock_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Housing%20stock.csv")
+sns.lineplot(data = Housing_Stock_histo)
+plt.figure()
+
 #Fonctions 
 """
 class Household:
