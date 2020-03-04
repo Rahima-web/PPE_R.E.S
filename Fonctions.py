@@ -44,8 +44,12 @@ GDP_Export_Import_histo = readData_years("https://raw.githubusercontent.com/Rahi
 sns.lineplot(data = GDP_Export_Import_histo)
 plt.figure()
 
-Inflation_IRBank_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation_TI.csv")
-sns.lineplot(data = Inflation_IRBank_histo)
+Inflation_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation.csv")
+sns.lineplot(data = Inflation_histo)
+plt.figure()
+
+IRBank_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_IR_Bank_Loans%20.csv")
+sns.lineplot(data = IRBank_histo)
 plt.figure()
 
 GovSpending_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Govspending.csv")
@@ -83,7 +87,23 @@ plt.figure()
 Deposits_Households_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Deposits%20for%20households.csv")
 sns.lineplot(data = Deposits_Households_histo)
 plt.figure()
-    
+
+Interest_Rates_Government_Bonds_histo = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Interest_rates_on_government_bonds.csv")
+sns.lineplot(data = Interest_Rates_Government_Bonds_histo)
+plt.figure()
+
+Housing_Wealth_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Dara_Housing%20Wealth.csv")
+sns.lineplot(data = Housing_Wealth_histo)
+plt.figure()
+
+Var_Inflation_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Varation_Inflation.csv")
+sns.lineplot(data = Var_Inflation_histo)
+plt.figure()
+
+LTV_histo = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_LTV.csv")
+sns.lineplot(data = LTV_histo)
+plt.figure()
+
 #Fonctions 
 """
 class Household:
