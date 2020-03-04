@@ -67,6 +67,10 @@ plt.figure()
 Mort_Rep_histo = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Mort_Rep.csv")
 sns.lineplot(data = Mort_Rep_histo)
 plt.figure()
+
+Mortgages_histo = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Mortgages.csv")
+sns.lineplot(data = Mort_Rep_histo)
+plt.figure()
     
 #Fonctions 
 """
