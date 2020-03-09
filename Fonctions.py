@@ -118,8 +118,6 @@ class Household:
     def Housing_Transaction(self, Delta_Ph):
         return phi1 + phi2*(Delta_Ph)
     
-    def Pension(self,Pension_contribution_rate,B_B_ICPF, B_B_ROW, b_B):
-        return Pension_contribution_rate *Bank.Bank_Bond_Price(self, B_B_ICPF, B_B_ROW, b_B)
     
 class Government:
     
