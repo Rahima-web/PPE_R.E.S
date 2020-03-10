@@ -92,12 +92,12 @@ Interest_Rates_Government_Bonds_histo = readData_all("https://raw.githubusercont
 sns.lineplot(data = Interest_Rates_Government_Bonds_histo)
 plt.figure()
 
-Housing_Wealth_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Dara_Housing%20Wealth.csv")
+Housing_Wealth_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Housing%20Wealth.csv")
 sns.lineplot(data = Housing_Wealth_histo)
 plt.figure()
 
-Var_Inflation_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Varation_Inflation.csv")
-sns.lineplot(data = Var_Inflation_histo)
+Inflation_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation.csv")
+sns.lineplot(data = Inflation_histo)
 plt.figure()
 
 LTV_histo = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_LTV.csv")
