@@ -147,6 +147,10 @@ Net_Wealth_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/
 sns.lineplot(data = Net_Wealth_histo)
 plt.figure()
 
+Ann_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Annuity.csv")
+sns.lineplot(data = Ann_histo)
+plt.figure()
+
 #Fonctions 
 """
 class Household:
