@@ -124,6 +124,22 @@ IR_deposits_histo = readData_all("https://raw.githubusercontent.com/Rahima-web/P
 sns.lineplot(data = IR_deposits_histo)
 plt.figure()
 
+b_G_histo = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Government%20bond.csv")
+sns.lineplot(data = b_G_histo)
+plt.figure()
+
+IR_Mort_histo = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Interest_Rates_Mortgages_3years.csv")
+sns.lineplot(data = IR_Mort_histo)
+plt.figure()
+
+b_B_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Bank%20bond%20supply.csv")
+sns.lineplot(data = b_B_histo)
+plt.figure()
+
+Gov_transferTo_Households_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Government%20transfer%20to%20households.csv")
+sns.lineplot(data = Gov_transferTo_Households_histo)
+plt.figure()
+
 #Fonctions 
 """
 class Household:
