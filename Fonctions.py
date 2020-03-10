@@ -108,6 +108,10 @@ Housing_Stock_histo = readData_years("https://raw.githubusercontent.com/Rahima-w
 sns.lineplot(data = Housing_Stock_histo)
 plt.figure()
 
+Investment_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Investment.csv")
+sns.lineplot(data = Investment_histo)
+plt.figure()
+
 #Fonctions 
 """
 class Household:
