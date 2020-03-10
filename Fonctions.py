@@ -26,6 +26,9 @@ phi2 = 8.6
 Rs = 2.90
 a1 = 0.79
 a2 = 0.01
+
+L = 41754836735 #livres
+
 """
 #Read Data
 
@@ -138,6 +141,10 @@ plt.figure()
 
 Gov_transferTo_Households_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Government%20transfer%20to%20households.csv")
 sns.lineplot(data = Gov_transferTo_Households_histo)
+plt.figure()
+
+Net_Wealth_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Net%20Wealth.csv")
+sns.lineplot(data = Net_Wealth_histo)
 plt.figure()
 
 #Fonctions 
