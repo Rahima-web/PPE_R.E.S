@@ -151,6 +151,10 @@ Ann_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E
 sns.lineplot(data = Ann_histo)
 plt.figure()
 
+Div_B_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Bank%20Dividend.csv")
+sns.lineplot(data = Div_B_histo)
+plt.figure()
+
 #Fonctions 
 """
 class Household:
