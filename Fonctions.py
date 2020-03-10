@@ -112,6 +112,18 @@ Investment_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/
 sns.lineplot(data = Investment_histo)
 plt.figure()
 
+ITR_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_ITR.csv")
+sns.lineplot(data = ITR_histo)
+plt.figure()
+
+B_G_histo = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Nominal%20demand%20for%20GB.csv")
+sns.lineplot(data = B_G_histo)
+plt.figure()
+
+IR_deposits_histo = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Interest%20rates%20on%20deposits.csv")
+sns.lineplot(data = IR_deposits_histo)
+plt.figure()
+
 #Fonctions 
 """
 class Household:
