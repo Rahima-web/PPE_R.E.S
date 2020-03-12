@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from datetime import datetime
-import pandas as pd
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense
