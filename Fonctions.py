@@ -37,15 +37,15 @@ B_B = 11900000000
 
 def readData_years(file):
     df = pd.read_csv(file,sep=",",header=0)
-    f = df.to_dict()
     df = df.set_index('Years')
+    f = df.to_dict(orient = 'index')
     return(df,f)
     
 def readData_all(file):
-    df = pd.read_csv(file,sep=",",header=0)
-    f = df.to_dict()
+    df = pd.read_csv(file,sep=",",header=0)  
     df['Years']=[datetime.strptime(x, '%d/%m/%Y') for x in df['Years']]
-    df = df.set_index('Years')
+    df = df.set_index(orient = 'Years')
+    f = df.to_dict()
     return(df,f)
     
 GDP_Export_Import,GDP_Export_Import_dic = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP_Export_Import.csv")
