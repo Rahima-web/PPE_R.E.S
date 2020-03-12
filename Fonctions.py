@@ -9,6 +9,11 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from datetime import datetime
+import pandas as pd
+import numpy as np
+from keras.models import Sequential
+from keras.layers import Dense
+from keras.layers.advanced_activations import PReLU
 
 #Constants
 """
@@ -38,148 +43,173 @@ B_B = 11900000000
 def readData_years(file):
     df = pd.read_csv(file,sep=",",header=0)
     df = df.set_index('Years')
-    f = df.to_dict(orient = 'index')
-    return(df,f)
+    return(df)
     
 def readData_all(file):
     df = pd.read_csv(file,sep=",",header=0)  
     df['Years']=[datetime.strptime(x, '%d/%m/%Y') for x in df['Years']]
-    df = df.set_index(orient = 'Years')
-    f = df.to_dict()
-    return(df,f)
+    df = df.set_index('Years')
+    return(df)
     
-GDP_Export_Import,GDP_Export_Import_dic = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP_Export_Import.csv")
+#Graph historic data
+    
+GDP_Export_Import = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP_Export_Import.csv")
 sns.lineplot(data = GDP_Export_Import)
 plt.figure()
 
-Inflation,Inflation_dic= readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation.csv")
+Inflation = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation.csv")
 sns.lineplot(data = Inflation)
 plt.figure()
 
-IRBank,IRBank_dic= readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_IR_Bank_Loans%20.csv")
+IRBank = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_IR_Bank_Loans%20.csv")
 sns.lineplot(data = IRBank)
 plt.figure()
 
-GovSpending,GovSpending_dic = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Govspending.csv")
+GovSpending = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Govspending.csv")
 sns.lineplot(data = GovSpending)
 plt.figure()
 
-HouseHoldTaxes,HouseHoldTaxes_dic = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_HouseHoldTaxes.csv")
+HouseHoldTaxes = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_HouseHoldTaxes.csv")
 sns.lineplot(data = HouseHoldTaxes)
 plt.figure()
 
-DTI,DTI_dic = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_DTI.csv")
+DTI = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_DTI.csv")
 sns.lineplot(data = DTI)
 plt.figure()
 
-New_Mortgages,New_Mortgages_dic= readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_New_Mortgages.csv")
+New_Mortgages = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_New_Mortgages.csv")
 sns.lineplot(data = New_Mortgages)
 plt.figure()
 
-Mort_Rep,Mort_Rep_dic = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Mort_Rep.csv")
+Mort_Rep = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Mort_Rep.csv")
 sns.lineplot(data = Mort_Rep)
 plt.figure()
 
-Mortgages,Mortgages_dic = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Mortgages.csv")
+Mortgages = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Mortgages.csv")
 sns.lineplot(data = Mortgages)
 plt.figure()
 
-Firms_taxes,Firms_taxes_dic= readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Firms%20taxes.csv")
+Firms_taxes = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Firms%20taxes.csv")
 sns.lineplot(data = Firms_taxes)
 plt.figure()
 
-Household_Tax_Rate,Household_Tax_Rate_dic = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Household_Tax_Rate.csv")
+Household_Tax_Rate = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Household_Tax_Rate.csv")
 sns.lineplot(data = Household_Tax_Rate)
 plt.figure()
 
-Deposits_Households,Deposits_Households_dic = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Deposits%20for%20households.csv")
+Deposits_Households = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Deposits%20for%20households.csv")
 sns.lineplot(data = Deposits_Households)
 plt.figure()
 
-IR_Gov_Bonds,IR_Gov_Bonds_dic= readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Interest_rates_on_government_bonds.csv")
+IR_Gov_Bonds = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Interest_rates_on_government_bonds.csv")
 sns.lineplot(data = IR_Gov_Bonds)
 plt.figure()
 
-Housing_Wealth,Housing_Wealth_dic= readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Housing%20Wealth.csv")
+Housing_Wealth = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Housing%20Wealth.csv")
 sns.lineplot(data = Housing_Wealth)
 plt.figure()
 
-Inflation,Inflation_dic = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation.csv")
+Inflation = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation.csv")
 sns.lineplot(data = Inflation)
 plt.figure()
 
-LTV,LTV_dic= readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_LTV.csv")
+LTV = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_LTV.csv")
 sns.lineplot(data = LTV)
 plt.figure()
 
-Housing_Stock, Housing_Stock_dic= readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Housing%20stock.csv")
+Housing_Stock = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Housing%20stock.csv")
 sns.lineplot(data = Housing_Stock)
 plt.figure()
 
-Investment,Investment_dic= readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Investment.csv")
+Investment = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Investment.csv")
 sns.lineplot(data = Investment)
 plt.figure()
 
-ITR,ITR_dic = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_ITR.csv")
+ITR = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_ITR.csv")
 sns.lineplot(data = ITR)
 plt.figure()
 
-B_G,B_G_dic = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Nominal%20demand%20for%20GB.csv")
+B_G = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Nominal%20demand%20for%20GB.csv")
 sns.lineplot(data = B_G)
 plt.figure()
 
-IR_deposits,IR_deposits_dic = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Interest%20rates%20on%20deposits.csv")
+IR_deposits = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Interest%20rates%20on%20deposits.csv")
 sns.lineplot(data = IR_deposits)
 plt.figure()
 
-b_G,b_G_dic = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Government%20bond.csv")
+b_G = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Government%20bond.csv")
 sns.lineplot(data = b_G)
 plt.figure()
 
-IR_Mort,IR_Mort_dic= readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Interest_Rates_Mortgages_3years.csv")
+IR_Mort = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Interest_Rates_Mortgages_3years.csv")
 sns.lineplot(data = IR_Mort)
 plt.figure()
 
-b_B,b_B_dic= readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Bank%20bond%20supply.csv")
+b_B = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Bank%20bond%20supply.csv")
 sns.lineplot(data = b_B)
 plt.figure()
 
-GovTransferTo_H,GovTransferTo_H_dic = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Government%20transfer%20to%20households.csv")
+GovTransferTo_H = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Government%20transfer%20to%20households.csv")
 sns.lineplot(data = GovTransferTo_H)
 plt.figure()
 
-Net_Wealth,Net_Wealth_dic= readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Net%20Wealth.csv")
+Net_Wealth = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Net%20Wealth.csv")
 sns.lineplot(data = Net_Wealth)
 plt.figure()
 
-Ann,Ann_dic = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Annuity.csv")
+Ann = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Annuity.csv")
 sns.lineplot(data = Ann)
 plt.figure()
 
-Div_B,Div_B_dic = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Bank%20Dividend.csv")
+Div_B = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Bank%20Dividend.csv")
 sns.lineplot(data = Div_B)
 plt.figure()
-'''
-import keras
-from keras.models import Sequential
 
-model = Sequential()
+#Training
 
-from keras.layers import Dense
+def model(df,x_test):
+    
+    y = []
+    
+    for el in df.columns:
+        y.append(np.ravel(df[el]))
+    
+    x = np.ravel(df.index)
+    y = np.array(y).transpose()
+    
+    new_y = np.zeros((y.shape[0],y.shape[1]))
+    for i in range(y.shape[1]):
+        new_y[:,i] = (y[:,i] - y[:,i].mean())/y[:,i].std()
+    
+    pred = []
+    
+    model = Sequential()
+            
+    model.add(Dense(output_dim = 1,init ='uniform',activation = PReLU(),input_shape=(1,)))
+    model.add(Dense(output_dim = 1,init ='uniform',activation = PReLU()))
+    model.add(Dense(output_dim = 1,init ='uniform',activation = PReLU()))
+    model.add(Dense(output_dim = 1,init ='uniform',activation = PReLU()))
+    model.add(Dense(output_dim = 1,init ='uniform',activation = PReLU()))
+    model.add(Dense(output_dim = 1,init ='uniform',activation = PReLU()))
+    model.add(Dense(output_dim = 1,init ='uniform',activation = PReLU()))
+            
+    model.compile(optimizer = 'adam' , loss = 'mean_squared_error', metrics = ['accuracy'])
+    
+    for i in range(y.shape[1]):
+        model.fit(x,new_y[:,i],batch_size = 10 ,nb_epoch=100) 
+        pred.append(model.predict(x_test, batch_size=128))
+        
+        
+    pred = np.array(pred).transpose()
+    y_pred = np.zeros((pred.shape[1],pred.shape[2]))  
+    for i in range(pred.shape[1]):
+        y_pred[:,i] = pred[:,i] * y[:,i].std() + y[:,i].mean()
+    
+    return y_pred
 
-model.add(Dense(units=64, activation='relu', input_dim=100))
-model.add(Dense(units=10, activation='softmax'))
 
-model.compile(loss='categorical_crossentropy',
-optimizer='sgd',
-metrics=['accuracy'])
 
-model.compile(loss=keras.losses.categorical_crossentropy,
-optimizer=keras.optimizers.SGD(lr=0.01, momentum=0.9, nesterov=True))
 
-model.fit(GDP_Export_Import_histo['Index'], GDP_Export_Import_histo['GDP'], epochs=2, batch_size=32)
-
-'''
 
 #Fonctions 
 """
