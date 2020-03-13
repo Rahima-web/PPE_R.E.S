@@ -71,8 +71,8 @@ HouseHoldTaxes = readData_years("https://raw.githubusercontent.com/Rahima-web/PP
 sns.lineplot(data = HouseHoldTaxes)
 plt.figure()
 
-DTI = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_DTI.csv")
-sns.lineplot(data = DTI)
+DtI = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_DTI.csv")
+sns.lineplot(data = DtI)
 plt.figure()
 
 New_Mortgages = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_New_Mortgages.csv")
@@ -111,8 +111,8 @@ Inflation = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E
 sns.lineplot(data = Inflation)
 plt.figure()
 
-LTV = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_LTV.csv")
-sns.lineplot(data = LTV)
+LtV = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_LTV.csv")
+sns.lineplot(data = LtV)
 plt.figure()
 
 Housing_Stock = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Housing%20stock.csv")
@@ -123,12 +123,12 @@ Investment = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.
 sns.lineplot(data = Investment)
 plt.figure()
 
-ITR = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_ITR.csv")
-sns.lineplot(data = ITR)
+ItR = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_ITR.csv")
+sns.lineplot(data = ItR)
 plt.figure()
 
-B_G = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Nominal%20demand%20for%20GB.csv")
-sns.lineplot(data = B_G)
+G_b = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Nominal%20demand%20for%20GB.csv")
+sns.lineplot(data = G_b)
 plt.figure()
 
 IR_deposits = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Interest%20rates%20on%20deposits.csv")
