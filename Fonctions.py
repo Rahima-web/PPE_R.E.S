@@ -163,9 +163,34 @@ Div_B = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/m
 sns.lineplot(data = Div_B)
 plt.figure()
 
+
+def data_test(df,nb):
+    data = df.index
+    test = []
+    x = []
+    
+    if type(data) == pd.core.indexes.datetimes.DatetimeIndex:
+        test.append(data[-1] + (data[1] - data[0]))
+        x.append(str(test[-1]))
+        for i in range(1,nb):
+            test.append(test[-1] + (data[1] - data[0]))
+            x.append(str(test[-1]))
+        x = pd.DataFrame(index=x)
+        x.index = [datetime.strptime(i, '%Y-%m-%d %H:%M:%S') for i in x.index]
+        
+    if type(data) == pd.core.indexes.numeric.Int64Index:
+        x.append(data[-1] + (data[1] - data[0]))
+        for i in range(1,nb):
+            x.append(x[-1] + (data[1] - data[0]))
+        x = pd.DataFrame(index=x)
+    
+    return(x)
+
 #Training
 
 def model(df,x_test):
+    
+    x_test = np.ravel(x_test.index)
     
     y = []
     
@@ -200,12 +225,18 @@ def model(df,x_test):
         
     pred = np.array(pred).transpose()
     y_pred = np.zeros((pred.shape[1],pred.shape[2]))  
-    for i in range(pred.shape[1]):
-        y_pred[:,i] = pred[:,i] * y[:,i].std() + y[:,i].mean()
+    for i in range(pred.shape[2]):
+        y_pred[:,i] = pred[0,:,i] * y[:,i].std() + y[:,i].mean()
     
     return y_pred
 
+H = model(HouseHoldTaxes,data_test(HouseHoldTaxes,10))
+D = model(DtI,data_test(DtI,10))
+G = model(GDP_Export_Import,data_test(GDP_Export_Import,10))
 
+print(H)
+print(D)
+print(G)
 
 
 
