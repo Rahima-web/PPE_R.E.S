@@ -51,9 +51,8 @@ def readData_years(file):
     return(df)
     
 def readData_all(file):
-    df = pd.read_csv(file,sep=",",header=0)  
-    df['MonthYear']=[datetime.strptime(x, '%d/%m/%Y') for x in df['Years']]
-    df = df.set_index('Years')
+    df = pd.read_csv(file,sep=",",header=0)
+    df['MonthYear']=[datetime.strptime(x, '%m/%Y') for x in df['Years'].str.slice(3,10)]
     return(df)
     
 #Graph historic data
@@ -125,7 +124,10 @@ Household_Tax_Rate = Household_Tax_Rate.drop("Month", axis=1)
 Deposits_Households = readData_years("./Data/Data_Deposits for households.csv")
 Deposits_Households = Deposits_Households.drop("Years", axis=1)
 Deposits_Households = Deposits_Households.drop("Month", axis=1)
+
+Deposits_Households.rename(columns={'Deposits for households ': 'Deposits for households'}, inplace=True)
 Deposits_Households["Deposits for households"] = Deposits_Households["Deposits for households"] / 12
+
 #Deposits_Households.plot(x="MonthYear", subplots=True)
 #plt.figure
 
@@ -227,14 +229,19 @@ Div_B = Div_B.drop("Years", axis=1)
 Div_B = Div_B.drop("Month", axis=1)
 Div_B["Bank Dividend (in sterling millions)"] = Div_B["Bank Dividend (in sterling millions)"] / 12
 #Div_B.plot(x="MonthYear", subplots=True)
-plt.figure
+#plt.figure
 
 
 dfs = [GDP_Export_Import,Inflation,IRBank, GovSpending, HouseHoldTaxes, DtI, New_Mortgages, Mort_Rep, Mortgages, Firms_taxes, Household_Tax_Rate, Deposits_Households, IR_Gov_Bonds, Housing_Wealth, LtV, Housing_Stock, Investment, ItR, G_b, IR_deposits, b_G, IR_Mort, b_B, GovTransferTo_H, Net_Wealth, Ann, Div_B ]
 dfs = [df.set_index('MonthYear') for df in dfs]
-dfs[0].join(dfs[1:])
-print("Voilaaaaaa")
-print(dfs)
+
+for element in dfs:
+    print(element)
+
+
+
+final_dataframe = pd.concat([df for df in dfs], join='outer', axis=1)
+
 
 #import sys
 #sys.exit()
