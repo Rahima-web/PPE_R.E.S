@@ -11,19 +11,19 @@ from fbprophet import Prophet
 
 # GDP
 df = final_dataframe.copy()
-
-df = df["GDP"][960:-12]
+df = df["GDP"][960:-12] # Récupère uniquement les dates avec une valeur.
 df = df.reset_index()
 df.columns = ["ds", "y"]
 
-#train = df[:495]
+# Train set (70%) et Test set (30%)
+train = df[:495]
+test = df[495:]
 
-
-train = df[:200]
-
+# Modèle Prophet
 model=Prophet()
 model.fit(train)
 
+# Prediction sur 10 ans
 future = model.make_future_dataframe(periods=12 * 10, freq='M')
 forecast = model.predict(future)
 fig = model.plot(forecast)
