@@ -13,4 +13,4 @@
 .cph_tmpxmsog8cd/
 .cph_tmpxx9zkt38/
 __pycache__/
-data/
+*.csv
