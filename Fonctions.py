@@ -51,115 +51,115 @@ def readData_all(file):
     
 #Graph historic data
     
-GDP_Export_Import = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_GDP_Export_Import.csv")
+GDP_Export_Import = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_GDP_Export_Import.csv")
 sns.lineplot(data = GDP_Export_Import)
 plt.figure()
 
-Inflation = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation.csv")
+Inflation = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Inflation.csv")
 sns.lineplot(data = Inflation)
 plt.figure()
 
-IRBank = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_IR_Bank_Loans%20.csv")
+IRBank = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_IR_Bank_Loans%20.csv")
 sns.lineplot(data = IRBank)
 plt.figure()
 
-GovSpending = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Govspending.csv")
+GovSpending = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Govspending.csv")
 sns.lineplot(data = GovSpending)
 plt.figure()
 
-HouseHoldTaxes = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_HouseHoldTaxes.csv")
+HouseHoldTaxes = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_HouseHoldTaxes.csv")
 sns.lineplot(data = HouseHoldTaxes)
 plt.figure()
 
-DtI = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_DTI.csv")
+DtI = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_DTI.csv")
 sns.lineplot(data = DtI)
 plt.figure()
 
-New_Mortgages = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_New_Mortgages.csv")
+New_Mortgages = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_New_Mortgages.csv")
 sns.lineplot(data = New_Mortgages)
 plt.figure()
 
-Mort_Rep = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Mort_Rep.csv")
+Mort_Rep = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Mort_Rep.csv")
 sns.lineplot(data = Mort_Rep)
 plt.figure()
 
-Mortgages = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Mortgages.csv")
+Mortgages = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Mortgages.csv")
 sns.lineplot(data = Mortgages)
 plt.figure()
 
-Firms_taxes = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Firms%20taxes.csv")
+Firms_taxes = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Firms%20taxes.csv")
 sns.lineplot(data = Firms_taxes)
 plt.figure()
 
-Household_Tax_Rate = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Household_Tax_Rate.csv")
+Household_Tax_Rate = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Household_Tax_Rate.csv")
 sns.lineplot(data = Household_Tax_Rate)
 plt.figure()
 
-Deposits_Households = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Deposits%20for%20households.csv")
+Deposits_Households = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Deposits%20for%20households.csv")
 sns.lineplot(data = Deposits_Households)
 plt.figure()
 
-IR_Gov_Bonds = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Interest_rates_on_government_bonds.csv")
+IR_Gov_Bonds = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Interest_rates_on_government_bonds.csv")
 sns.lineplot(data = IR_Gov_Bonds)
 plt.figure()
 
-Housing_Wealth = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Housing%20Wealth.csv")
+Housing_Wealth = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Housing%20Wealth.csv")
 sns.lineplot(data = Housing_Wealth)
 plt.figure()
 
-Inflation = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Inflation.csv")
+Inflation = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Inflation.csv")
 sns.lineplot(data = Inflation)
 plt.figure()
 
-LtV = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_LTV.csv")
+LtV = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_LTV.csv")
 sns.lineplot(data = LtV)
 plt.figure()
 
-Housing_Stock = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Housing%20stock.csv")
+Housing_Stock = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Housing%20stock.csv")
 sns.lineplot(data = Housing_Stock)
 plt.figure()
 
-Investment = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Investment.csv")
+Investment = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Investment.csv")
 sns.lineplot(data = Investment)
 plt.figure()
 
-ItR = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_ITR.csv")
+ItR = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_ITR.csv")
 sns.lineplot(data = ItR)
 plt.figure()
 
-G_b = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Nominal%20demand%20for%20GB.csv")
+G_b = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Nominal%20demand%20for%20GB.csv")
 sns.lineplot(data = G_b)
 plt.figure()
 
-IR_deposits = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Interest%20rates%20on%20deposits.csv")
+IR_deposits = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Interest%20rates%20on%20deposits.csv")
 sns.lineplot(data = IR_deposits)
 plt.figure()
 
-b_G = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Government%20bond.csv")
+b_G = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Government%20bond.csv")
 sns.lineplot(data = b_G)
 plt.figure()
 
-IR_Mort = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Interest_Rates_Mortgages_3years.csv")
+IR_Mort = readData_all("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Interest_Rates_Mortgages_3years.csv")
 sns.lineplot(data = IR_Mort)
 plt.figure()
 
-b_B = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Bank%20bond%20supply.csv")
+b_B = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Bank%20bond%20supply.csv")
 sns.lineplot(data = b_B)
 plt.figure()
 
-GovTransferTo_H = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Government%20transfer%20to%20households.csv")
+GovTransferTo_H = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Government%20transfer%20to%20households.csv")
 sns.lineplot(data = GovTransferTo_H)
 plt.figure()
 
-Net_Wealth = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Net%20Wealth.csv")
+Net_Wealth = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Net%20Wealth.csv")
 sns.lineplot(data = Net_Wealth)
 plt.figure()
 
-Ann = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Annuity.csv")
+Ann = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Annuity.csv")
 sns.lineplot(data = Ann)
 plt.figure()
 
-Div_B = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data_Bank%20Dividend.csv")
+Div_B = readData_years("https://raw.githubusercontent.com/Rahima-web/PPE_R.E.S/master/Data/Data_Bank%20Dividend.csv")
 sns.lineplot(data = Div_B)
 plt.figure()
 
