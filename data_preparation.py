@@ -48,17 +48,19 @@ def readData_years(file):
     df["MonthYear"] = df.Month.map(str) + "/" + df.Years.map(str)
     # Convertir en Datetime
     df["MonthYear"] = pd.to_datetime(df["MonthYear"], format="%m/%Y")
+    df = df.drop("Years", axis=1)
+    df = df.drop("Month", axis=1)
     return(df)
     
 def readData_all(file):
     df = pd.read_csv(file,sep=",",header=0)
     df['MonthYear']=[datetime.strptime(x, '%m/%Y') for x in df['Years'].str.slice(3,10)]
+    df = df.drop("Years", axis=1)
     return(df)
     
 #Graph historic data
 GDP_Export_Import = readData_years("./Data/Data_GDP_Export_Import.csv")
-GDP_Export_Import = GDP_Export_Import.drop("Years", axis=1)
-GDP_Export_Import = GDP_Export_Import.drop("Month", axis=1)
+
 GDP_Export_Import["GDP"] = GDP_Export_Import["GDP"] / 12
 GDP_Export_Import["Export"] = GDP_Export_Import["Export"] / 12
 GDP_Export_Import["Import"] = GDP_Export_Import["Import"] / 12
@@ -66,28 +68,20 @@ GDP_Export_Import["Import"] = GDP_Export_Import["Import"] / 12
 #plt.figure
 
 Inflation = readData_years("./Data/Data_Inflation.csv")
-Inflation = Inflation.drop("Years", axis=1)
-Inflation = Inflation.drop("Month", axis=1)
 #Inflation.plot(x="MonthYear", subplots=True)
 #plt.figure
 
 
 IRBank = readData_years("./Data/Data_IR_Bank_Loans .csv")
-IRBank = IRBank.drop("Years", axis=1)
-IRBank = IRBank.drop("Month", axis=1)
 #IRBank.plot(x="MonthYear", subplots=True)
 #plt.figure
 
 GovSpending = readData_years("./Data/Data_Govspending.csv")
-GovSpending = GovSpending.drop("Years", axis=1)
-GovSpending = GovSpending.drop("Month", axis=1)
 
 #GovSpending.plot(x="MonthYear", subplots=True)
 #plt.figure
 
 HouseHoldTaxes = readData_years("./Data/Data_HouseHoldTaxes.csv")
-HouseHoldTaxes = HouseHoldTaxes.drop("Years", axis=1)
-HouseHoldTaxes = HouseHoldTaxes.drop("Month", axis=1)
 #HouseHoldTaxes.plot(x="MonthYear", subplots=True)
 #plt.figure
 
@@ -110,20 +104,14 @@ Mortgages = readData_all("./Data/Data_Mortgages.csv")
 #plt.figure
 
 Firms_taxes = readData_years("./Data/Data_Firms taxes.csv")
-Firms_taxes = Firms_taxes.drop("Years", axis=1)
-Firms_taxes = Firms_taxes.drop("Month", axis=1)
 #Firms_taxes.plot(x="MonthYear", subplots=True)
 #plt.figure
 
 Household_Tax_Rate = readData_years("./Data/Data_Household_Tax_Rate.csv")
-Household_Tax_Rate = Household_Tax_Rate.drop("Years", axis=1)
-Household_Tax_Rate = Household_Tax_Rate.drop("Month", axis=1)
 #Household_Tax_Rate.plot(x="MonthYear", subplots=True)
 #plt.figure
 
 Deposits_Households = readData_years("./Data/Data_Deposits for households.csv")
-Deposits_Households = Deposits_Households.drop("Years", axis=1)
-Deposits_Households = Deposits_Households.drop("Month", axis=1)
 
 Deposits_Households.rename(columns={'Deposits for households ': 'Deposits for households'}, inplace=True)
 Deposits_Households["Deposits for households"] = Deposits_Households["Deposits for households"] / 12
@@ -138,8 +126,6 @@ IR_Gov_Bonds = readData_all("./Data/Data_Interest_rates_on_government_bonds.csv"
 #plt.figure
 
 Housing_Wealth = readData_years("./Data/Data_Housing Wealth.csv")
-Housing_Wealth = Housing_Wealth.drop("Years", axis=1)
-Housing_Wealth = Housing_Wealth.drop("Month", axis=1)
 Housing_Wealth["Housing wealth"] = Housing_Wealth["Housing wealth"] / 12
 #Housing_Wealth.plot(x="MonthYear", subplots=True)
 #plt.figure
@@ -150,30 +136,22 @@ LtV = readData_all("./Data/Data_LTV.csv")
 #plt.figure
 
 Housing_Stock = readData_years("./Data/Data_Housing stock.csv")
-Housing_Stock = Housing_Stock.drop("Years", axis=1)
-Housing_Stock = Housing_Stock.drop("Month", axis=1)
 Housing_Stock["Housing stock"] = Housing_Stock["Housing stock"] / 12
 #Housing_Stock.plot(x="MonthYear", subplots=True)
 #plt.figure
 
 Investment = readData_years("./Data/Data_Investment.csv")
-Investment = Investment.drop("Years", axis=1)
-Investment = Investment.drop("Month", axis=1)
 Investment["Annual business investment (million livre)"] = Investment["Annual business investment (million livre)"] / 12
 #Investment.plot(x="MonthYear", subplots=True)
 #plt.figure
 
 ItR = readData_years("./Data/Data_ITR.csv")
-ItR = ItR.drop("Years", axis=1)
-ItR = ItR.drop("Month", axis=1)
 ItR["Private pension wealth (billion Livres)"] = ItR["Private pension wealth (billion Livres)"] / 12
 ItR["Total wealth (billion Livres)"] = ItR["Total wealth (billion Livres)"] /12
 #ItR.plot(x="MonthYear", subplots=True)
 #plt.figure
 
 G_b = readData_years("./Data/Data_Nominal demand for GB.csv")
-G_b = G_b.drop("Years", axis=1)
-G_b = G_b.drop("Month", axis=1)
 G_b["GDP"] = G_b["GDP"] /12
 G_b["UK National debt en Livres"] = G_b["UK National debt en Livres"] /12
 G_b["Nominal demand for GB (ICPF)"] = G_b["Nominal demand for GB (ICPF)"] / 12
@@ -196,15 +174,11 @@ IR_Mort = readData_all("./Data/Data_Interest_Rates_Mortgages_3years.csv")
 #plt.figure
 
 b_B = readData_years("./Data/Data_Bank bond supply.csv")
-b_B = b_B.drop("Years", axis=1)
-b_B = b_B.drop("Month", axis=1)
 b_B["Bank bond supply "] = b_B["Bank bond supply "] / 12
 #b_B.plot(x="MonthYear", subplots=True)
 #plt.figure
 
 GovTransferTo_H = readData_years("./Data/Data_Government transfer to households.csv")
-GovTransferTo_H = GovTransferTo_H.drop("Years", axis=1)
-GovTransferTo_H = GovTransferTo_H.drop("Month", axis=1)
 GovTransferTo_H["GDP"] = GovTransferTo_H["GDP"] / 12
 GovTransferTo_H["Government transfer to households"] = GovTransferTo_H["Government transfer to households"] / 12
 GovTransferTo_H = GovTransferTo_H.drop("GDP", axis=1)
@@ -212,21 +186,15 @@ GovTransferTo_H = GovTransferTo_H.drop("GDP", axis=1)
 #plt.figure
 
 Net_Wealth = readData_years("./Data/Data_Net Wealth.csv")
-Net_Wealth = Net_Wealth.drop("Years", axis=1)
-Net_Wealth = Net_Wealth.drop("Month", axis=1)
 #Net_Wealth.plot(x="MonthYear", subplots=True)
 #plt.figure
 
 Ann = readData_years("./Data/Data_Annuity.csv")
-Ann = Ann.drop("Years", axis=1)
-Ann = Ann.drop("Month", axis=1)
 Ann["Annuities "] = Ann["Annuities "] / 12
 #Ann.plot(x="MonthYear", subplots=True)
 #plt.figure
 
 Div_B = readData_years("./Data/Data_Bank Dividend.csv")
-Div_B = Div_B.drop("Years", axis=1)
-Div_B = Div_B.drop("Month", axis=1)
 Div_B["Bank Dividend (in sterling millions)"] = Div_B["Bank Dividend (in sterling millions)"] / 12
 #Div_B.plot(x="MonthYear", subplots=True)
 #plt.figure
@@ -234,9 +202,6 @@ Div_B["Bank Dividend (in sterling millions)"] = Div_B["Bank Dividend (in sterlin
 
 dfs = [GDP_Export_Import,Inflation,IRBank, GovSpending, HouseHoldTaxes, DtI, New_Mortgages, Mort_Rep, Mortgages, Firms_taxes, Household_Tax_Rate, Deposits_Households, IR_Gov_Bonds, Housing_Wealth, LtV, Housing_Stock, Investment, ItR, G_b, IR_deposits, b_G, IR_Mort, b_B, GovTransferTo_H, Net_Wealth, Ann, Div_B ]
 dfs = [df.set_index('MonthYear') for df in dfs]
-
-for element in dfs:
-    print(element)
 
 final_dataframe = pd.concat([df for df in dfs], join='outer', axis=1)
 
