@@ -238,8 +238,6 @@ print(H)
 print(D)
 print(G)
 
-
-
 #Fonctions 
 """
 class Household:
