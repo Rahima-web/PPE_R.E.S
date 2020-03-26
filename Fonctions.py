@@ -207,8 +207,6 @@ def model(df,x_test):
 
 
 
-
-
 #Fonctions 
 """
 class Household:
