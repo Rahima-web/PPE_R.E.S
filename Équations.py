@@ -44,13 +44,45 @@ df = final_dataframe.copy()
 
 #Équations
 
+#Firms
+
 Wages = pd.DataFrame((1 - gamma) * df["GDP"])
 Wages.columns = ['Wages']
 graph(Wages)
 
+#Household
+
+Pension = pd.DataFrame(alpha * Wages['Wages'])
+Pension.columns = ["Pension"]
+graph(Pension)
+
+Disposable_Income_H = pd.DataFrame(Wages["Wages"] + df["HouseHold Taxes"] - df["Interest rates Mortgages 3 years (%)"] * df["Mortgages (Million of Livre)"] - Pension["Pension"] - df["Interest rates on deposits (%)"] * df["Deposits for households"] + df["Government transfer to households"] + df["Annuities "])
+Disposable_Income_H.columns = ["Disposable Income Households"]
+graph(Disposable_Income_H)
+
+Housing_Consumption = pd.DataFrame(a1 * Disposable_Income_H["Disposable Income Households"] + a2 * df["% of net disposable income"] * Disposable_Income_H["Disposable Income Households"])
+Housing_Consumption.columns = ["Housing Consumption"]
+graph(Housing_Consumption)
+
+Net_Wealth_H = pd.DataFrame(df["Deposits for households"] + df["Total wealth (billion Livres)"] + df["Housing wealth"] - df["Mortgages (Million of Livre)"])
+Net_Wealth_H.columns = ["Net Wealth Household"]
+graph(Net_Wealth_H)
+
 Housing_Transaction = pd.DataFrame(phi1 + phi2 * df["Variations Inflation (%)"])
 Housing_Transaction.columns = ["Housing Transaction"]
 graph(Housing_Transaction)
+
+Price_of_House = pd.DataFrame(phi1 + phi2 * df["Variations Inflation (%)"])
+Price_of_House.columns = ["Price of House"]
+graph(Price_of_House)
+
+Nominal_Investment_in_Housing = pd.DataFrame(theta1 + theta2 * (df["Residential mortgage LTV ratio (%)"] * Price_of_House["Price of House"] * Housing_Transaction["Housing Transaction"]) + theta3 * Price_of_House["Price of House"])
+Nominal_Investment_in_Housing.columns = ["Nominal Investment in Housing"]
+graph(Nominal_Investment_in_Housing)
+
+
+
+#Government
 
 Government_Bond_Price = pd.DataFrame((df["Nominal demand for GB (ICPF)"] + df["Nominal demand for GB (Rest of the World ou Overseas)"] + df["Nominal demand for GB (CB)"]) / df["UK government bonds issued by Central Government (in sterling millions)"])
 Government_Bond_Price.columns = ["Government Bond Price"]
@@ -60,6 +92,8 @@ NLG = pd.DataFrame(df["HouseHold Taxes"] + Tx_F - df["Government Spending (% of 
 NLG.columns = ["Net Lending Government"]
 graph(NLG)
 
+#Bank
+
 Bank_Bond_Price = pd.DataFrame(B_B / df["Bank bond supply "])
 Bank_Bond_Price.columns = ["Bank Bond Price"]
 graph(Bank_Bond_Price)
@@ -68,10 +102,9 @@ IR_Bank_Bond = pd.DataFrame(rho_B_1 * df["Interest rates on government bonds"] +
 IR_Bank_Bond.columns = ["Interest Rate Bank Bond"]
 graph(IR_Bank_Bond)
 
-Pension = pd.DataFrame(alpha * Wages['Wages'])
-Pension.columns = ["Pension"]
-graph(Pension)
 
-Disposable_Income_H = pd.DataFrame(Wages["Wages"] + df["HouseHold Taxes"] - df["Interest rates Mortgages 3 years (%)"] * df["Mortgages (Million of Livre)"] - Pension["Pension"] - df["Interest rates on deposits (%)"] * df["Deposits for households"] + df["Government transfer to households"] + df["Annuities "])
-Disposable_Income_H.columns = ["Disposable Income Households"]
-graph(Disposable_Income_H)
+
+
+
+
+
