@@ -5,7 +5,7 @@ Created on Thu Mar 26 15:24:37 2020
 
 @author: HOAREAU.LyseMay
 """
-from data_preparation import final_dataframe
+from data_preparation import f_train
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
@@ -40,7 +40,7 @@ def graph(df):
     sns.lineplot(data = df)
     plt.figure()
 
-df = final_dataframe.copy()
+df = f_train.copy()
 
 #Équations
 
@@ -117,7 +117,7 @@ graph(NLB)
 
 
 dfs = [Wages, Pension, Disposable_Income_H, Housing_Consumption, Net_Wealth_H, Housing_Transaction, Price_of_House, Nominal_Investment_in_Housing, Demand, NLH, NLF, Government_Bond_Price, NLG, Interest_rate_GB, Bank_Bond_Price, IR_Bank_Bond, NLB]
-dfs = [df.set_index('Date') for df in dfs]
+#dfs = [df.set_index('Date') for df in dfs]
 
 equations = pd.concat([df for df in dfs], join='outer', axis=1)
 
