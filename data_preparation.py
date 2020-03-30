@@ -155,10 +155,11 @@ print(final_train)
 final_train.to_csv("result_train.csv")
 f_train = pd.read_csv("result_train.csv", index_col = "MonthYear")
 f_train.fillna((f_train.mean()), inplace=True)
-f_train.to_csv("r_train.csv")
+#f_train.to_csv("r_train.csv")   #(permet de voir le dataframe f_train complété au max)
+
 #Notre dataframe test s'appelle f_test
 final_test = final[132:]
 final_test.to_csv("result_test.csv")
 f_test = pd.read_csv("result_test.csv", index_col = "MonthYear")
 f_test.fillna((f_test.mean()), inplace=True)
-f_test.to_csv("r_test.csv")
+#f_test.to_csv("r_test.csv")    #(permet de voir le dataframe f_test complété au max)
