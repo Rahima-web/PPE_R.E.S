@@ -144,12 +144,21 @@ Div_B = readData_years("./Data/Data_Bank Dividend.csv")
 Div_B["Bank Dividend (in sterling millions)"] = Div_B["Bank Dividend (in sterling millions)"] / 12
 
 
-
 dfs = [GDP_Export_Import,Inflation,IRBank, GovSpending, HouseHoldTaxes, DtI, New_Mortgages, Mort_Rep, Mortgages, Firms_taxes, Household_Tax_Rate, Deposits_Households, IR_Gov_Bonds, Housing_Wealth, LtV, Housing_Stock, Investment, ItR, G_b, IR_deposits, b_G, IR_Mort, b_B, GovTransferTo_H, Net_Wealth, Ann, Div_B ]
 dfs = [df.set_index('MonthYear') for df in dfs]
 
+#Notre dataframe train s'appelle f_train
 final_dataframe = pd.concat([df for df in dfs], join='outer', axis=1)
 final = final_dataframe[1440:1668]
-
-print(final)
-
+final_train = final[:132]
+print(final_train)
+final_train.to_csv("result_train.csv")
+f_train = pd.read_csv("result_train.csv", index_col = "MonthYear")
+f_train.fillna((f_train.mean()), inplace=True)
+f_train.to_csv("r_train.csv")
+#Notre dataframe test s'appelle f_test
+final_test = final[132:]
+final_test.to_csv("result_test.csv")
+f_test = pd.read_csv("result_test.csv", index_col = "MonthYear")
+f_test.fillna((f_test.mean()), inplace=True)
+f_test.to_csv("r_test.csv")
