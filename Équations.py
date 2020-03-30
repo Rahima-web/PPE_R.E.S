@@ -117,7 +117,7 @@ graph(NLB)
 
 
 dfs = [Wages, Pension, Disposable_Income_H, Housing_Consumption, Net_Wealth_H, Housing_Transaction, Price_of_House, Nominal_Investment_in_Housing, Demand, NLH, NLF, Government_Bond_Price, NLG, Interest_rate_GB, Bank_Bond_Price, IR_Bank_Bond, NLB]
-dfs = [df.set_index('MonthYear') for df in dfs]
+dfs = [df.set_index('Date') for df in dfs]
 
 equations = pd.concat([df for df in dfs], join='outer', axis=1)
 

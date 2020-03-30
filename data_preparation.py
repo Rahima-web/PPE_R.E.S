@@ -45,9 +45,9 @@ def readData_years(file):
 
     df = df.reset_index(drop=True)
     
-    df["MonthYear"] = df.Month.map(str) + "/" + df.Years.map(str)
+    df["Date"] = df.Month.map(str) + "/" + df.Years.map(str)
     # Convertir en Datetime
-    df["MonthYear"] = pd.to_datetime(df["MonthYear"], format="%m/%Y")
+    df["Date"] = pd.to_datetime(df["Date"], format="%m/%Y")
     df = df.drop("Years", axis=1)
     df = df.drop("Month", axis=1)
     
@@ -55,7 +55,7 @@ def readData_years(file):
     
 def readData_all(file):
     df = pd.read_csv(file,sep=",",header=0)
-    df['MonthYear']=[datetime.strptime(x, '%m/%Y') for x in df['Years'].str.slice(3,10)]
+    df['Date']=[datetime.strptime(x, '%m/%Y') for x in df['Years'].str.slice(3,10)]
     df = df.drop("Years", axis=1)
     return(df)
     
@@ -145,7 +145,8 @@ Div_B["Bank Dividend (in sterling millions)"] = Div_B["Bank Dividend (in sterlin
 
 
 dfs = [GDP_Export_Import,Inflation,IRBank, GovSpending, HouseHoldTaxes, DtI, New_Mortgages, Mort_Rep, Mortgages, Firms_taxes, Household_Tax_Rate, Deposits_Households, IR_Gov_Bonds, Housing_Wealth, LtV, Housing_Stock, Investment, ItR, G_b, IR_deposits, b_G, IR_Mort, b_B, GovTransferTo_H, Net_Wealth, Ann, Div_B ]
-dfs = [df.set_index('MonthYear') for df in dfs]
+dfs = [df.set_index('Date') for df in dfs]
+
 
 #Notre dataframe train s'appelle f_train
 final_dataframe = pd.concat([df for df in dfs], join='outer', axis=1)
@@ -153,13 +154,13 @@ final = final_dataframe[1440:1668]
 final_train = final[:132]
 print(final_train)
 final_train.to_csv("result_train.csv")
-f_train = pd.read_csv("result_train.csv", index_col = "MonthYear")
+f_train = pd.read_csv("result_train.csv", index_col = "Date")
 f_train.fillna((f_train.mean()), inplace=True)
 #f_train.to_csv("r_train.csv")   #(permet de voir le dataframe f_train complété au max)
 
 #Notre dataframe test s'appelle f_test
 final_test = final[132:]
 final_test.to_csv("result_test.csv")
-f_test = pd.read_csv("result_test.csv", index_col = "MonthYear")
+f_test = pd.read_csv("result_test.csv", index_col = "Date")
 f_test.fillna((f_test.mean()), inplace=True)
 #f_test.to_csv("r_test.csv")    #(permet de voir le dataframe f_test complété au max)
