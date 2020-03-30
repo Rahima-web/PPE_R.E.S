@@ -19,6 +19,7 @@ df.columns = ["ds", "y"]
 train = df[:495]
 test = df[495:]
 
+print(train)
 # Modèle Prophet
 model=Prophet()
 model.fit(train)
