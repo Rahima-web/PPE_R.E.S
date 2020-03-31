@@ -29,6 +29,7 @@ a2 = 0.01
 Tx_F = 19./100
 alpha = 6.5/100
 theta_F = 62./100
+theta_H = 18.5/100
 
 L = 41754836735 
 T_F = 24000000000
@@ -95,7 +96,7 @@ Government_Bond_Price.columns = ["Government Bond Price"]
 graph(Government_Bond_Price)
 
 #################A REVOIR#################
-NLG = pd.DataFrame(df["HouseHold Taxes"] + Tx_F - df["Government Spending (% of GDP)"] * df["GDP"] - df["Government transfer to households"] - T_F - df["Interest rates on government bonds"] * (df["Nominal demand for GB (Rest of the World ou Overseas)"] + df["Nominal demand for GB (ICPF)"] ))
+NLG = pd.DataFrame(theta_H * Wages["Wages"] + theta_F * (Demand["Demand"] - df["Import"] - Wages['Wages'] - df["Interest rate on bank loans"] * L + df["Interest rates on deposits (%)"] * D_F) - df["Government Spending (% of GDP)"] * df["GDP"] - df["Government transfer to households"] - T_F - df["Interest rates on government bonds"] * (df["Nominal demand for GB (Rest of the World ou Overseas)"] + df["Nominal demand for GB (ICPF)"] ))
 NLG.columns = ["Net Lending Government"]
 graph(NLG)
 
