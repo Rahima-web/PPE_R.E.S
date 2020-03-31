@@ -28,6 +28,7 @@ a1 = 0.79
 a2 = 0.01
 Tx_F = 19./100
 alpha = 6.5/100
+theta_F = 62./100
 
 L = 41754836735 
 T_F = 24000000000
@@ -85,8 +86,7 @@ NLH = pd.DataFrame(Disposable_Income_H["Disposable Income Households"] + Pension
 NLH.columns = ["Net Lending Household"]
 graph(NLH)
 
-#################A REVOIR#################
-NLF = pd.DataFrame(S_F * (Demand["Demand"] + df["Import"] - Wages['Wages'] - Tx_F + T_F - df["Interest rate on bank loans"] * L + df["Interest rates on deposits (%)"] *D_F) - df["Annual business investment (million livre)"])
+NLF = pd.DataFrame(S_F * (Demand["Demand"] + df["Import"] - Wages['Wages'] - theta_F * (Demand["Demand"] - df["Import"] - Wages['Wages'] - df["Interest rate on bank loans"] * L + df["Interest rates on deposits (%)"] * D_F) + T_F - df["Interest rate on bank loans"] * L + df["Interest rates on deposits (%)"] * D_F) - df["Annual business investment (million livre)"])
 NLF.columns = ['Net Lending Firm']
 graph(NLF)
 
