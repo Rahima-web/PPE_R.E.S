@@ -95,7 +95,6 @@ Government_Bond_Price = pd.DataFrame((df["Nominal demand for GB (ICPF)"] + df["N
 Government_Bond_Price.columns = ["Government Bond Price"]
 graph(Government_Bond_Price)
 
-#################A REVOIR#################
 NLG = pd.DataFrame(theta_H * Wages["Wages"] + theta_F * (Demand["Demand"] - df["Import"] - Wages['Wages'] - df["Interest rate on bank loans"] * L + df["Interest rates on deposits (%)"] * D_F) - df["Government Spending (% of GDP)"] * df["GDP"] - df["Government transfer to households"] - T_F - df["Interest rates on government bonds"] * (df["Nominal demand for GB (Rest of the World ou Overseas)"] + df["Nominal demand for GB (ICPF)"] ))
 NLG.columns = ["Net Lending Government"]
 graph(NLG)
