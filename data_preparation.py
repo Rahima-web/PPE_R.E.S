@@ -5,11 +5,9 @@ Created on Thu Feb 20 09:08:58 2020
 
 @author: HOAREAU.LyseMay
 """
-import matplotlib.pyplot as plt
+
 import pandas as pd
 from datetime import datetime
-import numpy as np
-
 
 #Constants
 """
