@@ -5,8 +5,8 @@ Created on Thu Mar 26 15:24:37 2020
 
 @author: HOAREAU.LyseMay
 """
-from data_preparation import tab
-from ml import prediction
+#from data_preparation import tab
+from Prophet_Equation import predict
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -42,7 +42,7 @@ def graph(df):
     df.plot()
     plt.figure()
 
-df = prediction.copy()
+df = predict.copy()
 
 #Équations
 
