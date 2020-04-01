@@ -39,7 +39,7 @@ B_B = 11900000000
 #Graphe des données
 
 def graph(df):
-    sns.lineplot(data = df)
+    df.plot()
     plt.figure()
 
 df = tab.copy()
