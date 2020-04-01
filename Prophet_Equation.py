@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Mar 25 23:12:53 2020
+Created on Wed Apr  1 19:37:15 2020
 
 @author: sagan
 """
 
 import pandas as pd
-from data_preparation import f_train,f_test
+from data_preparation import tab
 from fbprophet import Prophet
 from datetime import datetime, timedelta
 
 #Copy of the dataframe train
-df1 = f_train.copy()
+df1 = tab.copy()
 
 # GDP
  
@@ -30,7 +30,7 @@ def model(df1):
     model.fit(df1)
     
     # Prediction for 9 years from 2011
-    future = model.make_future_dataframe(periods=12 * 9, freq='M')
+    future = model.make_future_dataframe(periods=12 * 7, freq='M')
     forecast = model.predict(future)
     prediction["Date"] = forecast["ds"]
     prediction[name[1]] = forecast["yhat"]
@@ -159,13 +159,3 @@ predict = [e, p]
 predict = pd.concat(predict)
 # predict est la dataframe finale contenant toutes les valeurs anciennes et nouvelles avec les dates ajustées.
 print(predict)
-
-
-
-
-
-
-
-
-
-
