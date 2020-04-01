@@ -8,7 +8,7 @@ Created on Wed Mar 25 23:12:53 2020
 import pandas as pd
 from data_preparation import f_train,f_test
 from fbprophet import Prophet
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 #Copy of the dataframe train
 df1 = f_train.copy()
@@ -54,6 +54,9 @@ model(df_Inflation)
 df_VarInflation = df1["Variations Inflation (%)"]
 model(df_VarInflation)
 
+df_VarIntBankLoans = df1["Variations Interest rates on bank loans(%)"]
+model(df_VarIntBankLoans)
+
 df_IntBankLoans = df1["Interest rate on bank loans"]
 model(df_IntBankLoans)
 
@@ -85,7 +88,7 @@ df_DepHouse = df1["Deposits for households"]
 model(df_DepHouse)
 
 df_IntGovBonds = df1["Interest rates on government bonds"]
-model(df_DepHouse)
+model(df_IntGovBonds)
 
 df_HousingWealth = df1["Housing wealth"]
 model(df_HousingWealth)
@@ -160,7 +163,7 @@ predict = pd.concat(predict)
 # predict est la dataframe finale contenant toutes les valeurs anciennes et nouvelles avec les dates ajustées.
 print(predict)
 
-
+#######MSE##############
 
 
 

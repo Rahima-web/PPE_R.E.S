@@ -8,7 +8,7 @@ Created on Wed Apr  1 19:37:15 2020
 import pandas as pd
 from data_preparation import tab
 from fbprophet import Prophet
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 #Copy of the dataframe train
 df1 = tab.copy()
@@ -30,7 +30,7 @@ def model(df1):
     model.fit(df1)
     
     # Prediction for 9 years from 2011
-    future = model.make_future_dataframe(periods=12 * 7, freq='M')
+    future = model.make_future_dataframe(periods=12 * 9, freq='M')
     forecast = model.predict(future)
     prediction["Date"] = forecast["ds"]
     prediction[name[1]] = forecast["yhat"]
@@ -53,6 +53,9 @@ model(df_Inflation)
 
 df_VarInflation = df1["Variations Inflation (%)"]
 model(df_VarInflation)
+
+df_VarIntBankLoans = df1["Variations Interest rates on bank loans(%)"]
+model(df_VarIntBankLoans)
 
 df_IntBankLoans = df1["Interest rate on bank loans"]
 model(df_IntBankLoans)
@@ -85,7 +88,7 @@ df_DepHouse = df1["Deposits for households"]
 model(df_DepHouse)
 
 df_IntGovBonds = df1["Interest rates on government bonds"]
-model(df_DepHouse)
+model(df_IntGovBonds)
 
 df_HousingWealth = df1["Housing wealth"]
 model(df_HousingWealth)
@@ -149,8 +152,9 @@ model(df_BDiv)
 
 #Nos index deviennent les dates
 prediction = prediction.set_index("Date")
-e = prediction[:204]
-p = prediction[204:]
+print(prediction)
+e = prediction[:288]
+p = prediction[288:]
 #Les nouvelles données sont des fin de mois donc décalage de 1 jour pour avoir le 1er jour de tous les mois
 p.index += timedelta(days=1)
 
