@@ -14,7 +14,6 @@ from datetime import timedelta
 df1 = tab.copy()
 
 # GDP
- 
 
 prediction = []
 
