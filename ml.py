@@ -5,29 +5,27 @@ Created on Wed Mar 25 23:12:53 2020
 @author: sagan
 """
 
-from data_preparation import final_dataframe
-from fbprophet import Prophet
 
+from data_preparation import f_train,f_test
+from fbprophet import Prophet
+#Copy of the dataframe train
+df1 = f_train.copy()
 
 # GDP
-df = final_dataframe.copy()
-df = df["GDP"][960:-12] # Récupère uniquement les dates avec une valeur.
-df = df.reset_index()
-df.columns = ["ds", "y"]
+df1 = df1["GDP"]
+df1 = df1.reset_index()
+df1.columns = ["ds","y"]
 
-# Train set (70%) et Test set (30%)
-train = df[:495]
-test = df[495:]
-
-print(train)
-# Modèle Prophet
+#Model used : Prophet
 model=Prophet()
-model.fit(train)
+model.fit(df1)
 
-# Prediction sur 10 ans
-future = model.make_future_dataframe(periods=12 * 10, freq='M')
+# Prediction for 9 years from 2011
+future = model.make_future_dataframe(periods=12 * 9, freq='M')
 forecast = model.predict(future)
 fig = model.plot(forecast)
 
-
+#Test values
+df2 = f_test.copy()
+test = df2["GDP"]
 
