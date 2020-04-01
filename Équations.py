@@ -8,6 +8,7 @@ Created on Thu Mar 26 15:24:37 2020
 #from data_preparation import tab
 from Prophet_Equation import predict
 import matplotlib.pyplot as plt
+import seaborn as sns
 import pandas as pd
 
 #Constants
@@ -39,13 +40,13 @@ B_B = 11900000000
 #Graphe des données
 
 def graph(df):
-    df.plot()
+    #df.plot()
+    sns.lineplot(data = df)
     plt.figure()
 
 df = predict.copy()
 
 #Équations
-
 
 Wages = pd.DataFrame((1 - gamma) * df["GDP"])
 Wages.columns = ['Wages']
