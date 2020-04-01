@@ -158,4 +158,4 @@ p.index += timedelta(days=1)
 predict = [e, p]
 predict = pd.concat(predict)
 # predict est la dataframe finale contenant toutes les valeurs anciennes et nouvelles avec les dates ajustées.
-print(predict)
+#print(predict)
