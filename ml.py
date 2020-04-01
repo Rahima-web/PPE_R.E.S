@@ -29,5 +29,5 @@ future = model.make_future_dataframe(periods=12 * 10, freq='M')
 forecast = model.predict(future)
 fig = model.plot(forecast)
 
-print(fig)
+
 

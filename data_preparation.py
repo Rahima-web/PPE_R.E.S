@@ -5,35 +5,10 @@ Created on Thu Feb 20 09:08:58 2020
 
 @author: HOAREAU.LyseMay
 """
-import matplotlib.pyplot as plt
+
 import pandas as pd
 from datetime import datetime
-import numpy as np
 
-
-#Constants
-"""
-theta1 = 4200
-theta2 = 0.11
-theta3 = 37
-gamma = 0.35
-S_F = 0.74
-rho_G_1 = 0.06
-rho_G_2 = -0.027
-rho_B_1 = 0.023
-rho_B_2 = -0.02
-phi1 = 283
-phi2 = 8.6
-Rs = 2.90
-a1 = 0.79
-a2 = 0.01
-
-L = 41754836735 
-T_F = 24000000000
-D_F = 371255000
-B_B = 11900000000
-
-"""
 #Read Data
 def readData_years(file):
     df = pd.read_csv(file,sep=",",header=0)
@@ -151,16 +126,20 @@ dfs = [df.set_index('Date') for df in dfs]
 #Notre dataframe train s'appelle f_train
 final_dataframe = pd.concat([df for df in dfs], join='outer', axis=1)
 final = final_dataframe[1440:1668]
-final_train = final[:132]
-print(final_train)
+final_train = final[:143]
+
 final_train.to_csv("result_train.csv")
 f_train = pd.read_csv("result_train.csv", index_col = "Date")
 f_train.fillna((f_train.mean()), inplace=True)
 #f_train.to_csv("r_train.csv")   #(permet de voir le dataframe f_train complété au max)
 
 #Notre dataframe test s'appelle f_test
-final_test = final[132:]
+final_test = final[143:]
 final_test.to_csv("result_test.csv")
 f_test = pd.read_csv("result_test.csv", index_col = "Date")
 f_test.fillna((f_test.mean()), inplace=True)
 #f_test.to_csv("r_test.csv")    #(permet de voir le dataframe f_test complété au max)
+
+tab = [f_train, f_test]
+tab = pd.concat(tab)
+print(tab)

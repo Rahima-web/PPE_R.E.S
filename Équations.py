@@ -5,7 +5,7 @@ Created on Thu Mar 26 15:24:37 2020
 
 @author: HOAREAU.LyseMay
 """
-from data_preparation import final_dataframe
+from data_preparation import tab
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
@@ -28,6 +28,8 @@ a1 = 0.79
 a2 = 0.01
 Tx_F = 19./100
 alpha = 6.5/100
+theta_F = 62./100
+theta_H = 18.5/100
 
 L = 41754836735 
 T_F = 24000000000
@@ -40,7 +42,7 @@ def graph(df):
     sns.lineplot(data = df)
     plt.figure()
 
-df = final_dataframe.copy()
+df = tab.copy()
 
 #Équations
 
@@ -85,8 +87,7 @@ NLH = pd.DataFrame(Disposable_Income_H["Disposable Income Households"] + Pension
 NLH.columns = ["Net Lending Household"]
 graph(NLH)
 
-#################A REVOIR#################
-NLF = pd.DataFrame(S_F * (Demand["Demand"] + df["Import"] - Wages['Wages'] - Tx_F + T_F - df["Interest rate on bank loans"] * L + df["Interest rates on deposits (%)"] *D_F) - df["Annual business investment (million livre)"])
+NLF = pd.DataFrame(S_F * (Demand["Demand"] + df["Import"] - Wages['Wages'] - theta_F * (Demand["Demand"] - df["Import"] - Wages['Wages'] - df["Interest rate on bank loans"] * L + df["Interest rates on deposits (%)"] * D_F) + T_F - df["Interest rate on bank loans"] * L + df["Interest rates on deposits (%)"] * D_F) - df["Annual business investment (million livre)"])
 NLF.columns = ['Net Lending Firm']
 graph(NLF)
 
@@ -94,8 +95,7 @@ Government_Bond_Price = pd.DataFrame((df["Nominal demand for GB (ICPF)"] + df["N
 Government_Bond_Price.columns = ["Government Bond Price"]
 graph(Government_Bond_Price)
 
-#################A REVOIR#################
-NLG = pd.DataFrame(df["HouseHold Taxes"] + Tx_F - df["Government Spending (% of GDP)"] * df["GDP"] - df["Government transfer to households"] - T_F - df["Interest rates on government bonds"] * (df["Nominal demand for GB (Rest of the World ou Overseas)"] + df["Nominal demand for GB (ICPF)"] ))
+NLG = pd.DataFrame(theta_H * Wages["Wages"] + theta_F * (Demand["Demand"] - df["Import"] - Wages['Wages'] - df["Interest rate on bank loans"] * L + df["Interest rates on deposits (%)"] * D_F) - df["Government Spending (% of GDP)"] * df["GDP"] - df["Government transfer to households"] - T_F - df["Interest rates on government bonds"] * (df["Nominal demand for GB (Rest of the World ou Overseas)"] + df["Nominal demand for GB (ICPF)"] ))
 NLG.columns = ["Net Lending Government"]
 graph(NLG)
 
@@ -117,7 +117,7 @@ graph(NLB)
 
 
 dfs = [Wages, Pension, Disposable_Income_H, Housing_Consumption, Net_Wealth_H, Housing_Transaction, Price_of_House, Nominal_Investment_in_Housing, Demand, NLH, NLF, Government_Bond_Price, NLG, Interest_rate_GB, Bank_Bond_Price, IR_Bank_Bond, NLB]
-dfs = [df.set_index('Date') for df in dfs]
+#dfs = [df.set_index('Date') for df in dfs]
 
 equations = pd.concat([df for df in dfs], join='outer', axis=1)
 
