@@ -5,9 +5,8 @@ Created on Thu Mar 26 15:24:37 2020
 
 @author: HOAREAU.LyseMay
 """
-from data_preparation import f_train
+from data_preparation import tab
 import matplotlib.pyplot as plt
-import seaborn as sns
 import pandas as pd
 
 #Constants
@@ -39,10 +38,10 @@ B_B = 11900000000
 #Graphe des données
 
 def graph(df):
-    sns.lineplot(data = df)
+    df.plot()
     plt.figure()
 
-df = f_train.copy()
+df = tab.copy()
 
 #Équations
 
