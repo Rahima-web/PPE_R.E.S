@@ -13,8 +13,6 @@ from datetime import timedelta
 #Copy of the dataframe train
 df1 = tab.copy()
 
-# GDP
-
 prediction = []
 
 #Dataframe ou on aura tout stocké: les anciennes valeurs et les predictions
@@ -33,13 +31,12 @@ def model(df1):
     forecast = model.predict(future)
     prediction["Date"] = forecast["ds"]
     prediction[name[1]] = forecast["yhat"]
-    fig = model.plot(forecast)
+    #fig = model.plot(forecast)
 
 
 # Application pour chaque colonne
 df_GDP = df1["GDP"]
 model(df_GDP)
-
 
 df_Export = df1["Export"]
 model(df_Export)
@@ -151,7 +148,7 @@ model(df_BDiv)
 
 #Nos index deviennent les dates
 prediction = prediction.set_index("Date")
-print(prediction)
+#print(prediction)
 e = prediction[:288]
 p = prediction[288:]
 #Les nouvelles données sont des fin de mois donc décalage de 1 jour pour avoir le 1er jour de tous les mois
