@@ -8,6 +8,7 @@ Created on Wed Mar 25 23:12:53 2020
 
 from data_preparation import f_train,f_test
 from fbprophet import Prophet
+
 #Copy of the dataframe train
 df1 = f_train.copy()
 
