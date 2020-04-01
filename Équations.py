@@ -6,6 +6,7 @@ Created on Thu Mar 26 15:24:37 2020
 @author: HOAREAU.LyseMay
 """
 from data_preparation import tab
+from ml import prediction
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -41,7 +42,7 @@ def graph(df):
     df.plot()
     plt.figure()
 
-df = tab.copy()
+df = prediction.copy()
 
 #Équations
 
