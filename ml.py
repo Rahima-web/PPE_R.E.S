@@ -167,10 +167,10 @@ prediction_values = predict[193:288]
 n = len(prediction_values)
 
 def error(y,yhat):
-    sum = 0
+    s = 0
     for i in range(n):
-        sum += (y[i] - yhat[i])**2
-    return 1/n * sum
+        s += (y[i] - yhat[i])**2
+    return 1/n * s
 
 result = []
 for col in p:
