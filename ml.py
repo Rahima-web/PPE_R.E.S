@@ -13,8 +13,6 @@ from datetime import timedelta
 #Copy of the dataframe train
 df1 = f_train.copy()
 
-# GDP
- 
 
 prediction = []
 
@@ -35,7 +33,6 @@ def model(df1):
     prediction["Date"] = forecast["ds"]
     prediction[name[1]] = forecast["yhat"]
     fig = model.plot(forecast)
-
 
 # Application pour chaque colonne
 df_GDP = df1["GDP"]
@@ -152,8 +149,8 @@ model(df_BDiv)
 
 #Nos index deviennent les dates
 prediction = prediction.set_index("Date")
-e = prediction[:204]
-p = prediction[204:]
+e = prediction[:193]
+p = prediction[193:]
 #Les nouvelles données sont des fin de mois donc décalage de 1 jour pour avoir le 1er jour de tous les mois
 p.index += timedelta(days=1)
 
@@ -163,12 +160,22 @@ predict = pd.concat(predict)
 # predict est la dataframe finale contenant toutes les valeurs anciennes et nouvelles avec les dates ajustées.
 print(predict)
 
-#######MSE##############
+####### MSE with test values ##############
+
+test = f_test.copy()
+prediction_values = predict[193:288]
+n = len(prediction_values)
+
+def error(y,yhat):
+    sum = 0
+    for i in range(n):
+        sum += (y[i] - yhat[i])**2
+    return 1/n * sum
+
+result = []
+for col in p:
+    result.append([col, error(test[col], prediction_values[col])])
 
 
-
-
-
-
-
-
+mse = pd.DataFrame(result, columns = ["Name", "Error"])
+mse = mse.set_index("Name")
