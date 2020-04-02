@@ -13,8 +13,6 @@ from datetime import timedelta
 #Copy of the dataframe train
 df1 = f_train.copy()
 
-# GDP
- 
 
 prediction = []
 
@@ -35,7 +33,6 @@ def model(df1):
     prediction["Date"] = forecast["ds"]
     prediction[name[1]] = forecast["yhat"]
     fig = model.plot(forecast)
-
 
 # Application pour chaque colonne
 df_GDP = df1["GDP"]
