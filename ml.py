@@ -6,6 +6,7 @@ Created on Wed Mar 25 23:12:53 2020
 """
 
 import pandas as pd
+import numpy as np
 from data_preparation import f_train,f_test
 from fbprophet import Prophet
 from datetime import timedelta
@@ -164,18 +165,21 @@ print(predict)
 
 test = f_test.copy()
 prediction_values = predict[193:288]
+print(predict)
 n = len(prediction_values)
 
 def error(y,yhat):
-    sum = 0
+    s= 0
     for i in range(n):
-        sum += (y[i] - yhat[i])**2
-    return 1/n * sum
+        s += (y[i] - yhat[i])**2
+    return np.sqrt(1/n * s)
 
 result = []
 for col in p:
     result.append([col, error(test[col], prediction_values[col])])
 
-
 mse = pd.DataFrame(result, columns = ["Name", "Error"])
 mse = mse.set_index("Name")
+print(mse)
+
+    
