@@ -8,7 +8,7 @@ from data_preparation import final_dataframe
 
 #Visualisation des données
 tmp = final_dataframe.reset_index()
-tmp = tmp[tmp["Date"] >= "1960"] # Données après 1960
+tmp = tmp[tmp["Date"] >= "2000"] # Données après 1960
 tmp["Date"] = tmp["Date"].astype(str)
 
 for col in final_dataframe.columns:

@@ -1,20 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Mar 25 23:12:53 2020
+Created on Wed Apr  1 19:37:15 2020
 
 @author: sagan
 """
 
 import pandas as pd
-from data_preparation import f_train,f_test
+from data_preparation import tab
 from fbprophet import Prophet
 from datetime import timedelta
 
 #Copy of the dataframe train
-df1 = f_train.copy()
-
-# GDP
- 
+df1 = tab.copy()
 
 prediction = []
 
@@ -34,13 +31,12 @@ def model(df1):
     forecast = model.predict(future)
     prediction["Date"] = forecast["ds"]
     prediction[name[1]] = forecast["yhat"]
-    fig = model.plot(forecast)
+    #fig = model.plot(forecast)
 
 
 # Application pour chaque colonne
 df_GDP = df1["GDP"]
 model(df_GDP)
-
 
 df_Export = df1["Export"]
 model(df_Export)
@@ -152,8 +148,9 @@ model(df_BDiv)
 
 #Nos index deviennent les dates
 prediction = prediction.set_index("Date")
-e = prediction[:204]
-p = prediction[204:]
+#print(prediction)
+e = prediction[:288]
+p = prediction[288:]
 #Les nouvelles données sont des fin de mois donc décalage de 1 jour pour avoir le 1er jour de tous les mois
 p.index += timedelta(days=1)
 
@@ -161,14 +158,4 @@ p.index += timedelta(days=1)
 predict = [e, p]
 predict = pd.concat(predict)
 # predict est la dataframe finale contenant toutes les valeurs anciennes et nouvelles avec les dates ajustées.
-print(predict)
-
-#######MSE##############
-
-
-
-
-
-
-
-
+#print(predict)
