@@ -167,6 +167,7 @@ test = f_test.copy()
 prediction_values = predict[193:288]
 print(predict)
 n = len(prediction_values)
+m = len(test)
 
 def error(y,yhat):
     s= 0
@@ -174,11 +175,17 @@ def error(y,yhat):
         s += (y[i] - yhat[i])**2
     return np.sqrt(1/n * s)
 
+def mean(test):
+    a = 0
+    for i in range(m):
+        a += test[i]
+    return a/m
+
 result = []
 for col in p:
-    result.append([col, error(test[col], prediction_values[col])])
+    result.append([col, error(test[col], prediction_values[col]), mean(test[col])])
 
-mse = pd.DataFrame(result, columns = ["Name", "Error"])
+mse = pd.DataFrame(result, columns = ["Name", "Error", "Mean"])
 mse = mse.set_index("Name")
 print(mse)
 
