@@ -25,26 +25,40 @@ print(training)
 X = training["time_nb"]
 
 #Inintialisation of the slope and the intercept
-slope = 0.1
-intercept = 0.1
+s = 0.1
+i = 0.1
 n = len(training)
 
 def predict(x):
-    return slope * x + intercept
+    return s * x + i
 
+colonne = []
+slope = []   #Stock all the slopes of the different variables
+intercept = []   #Stock all the intercepts of the different variables
 
 for col in training:
     Y = training[col]
     axes = plt.axes()
     axes.grid()
     plt.scatter(X,Y)
-    slope, intercept, r_value, p_value, std_err = stats.linregress(X, Y)
-    print(slope)
-    print(intercept)
-
+    s, i, r_value, p_value, std_err = stats.linregress(X, Y)
+    colonne.append(col)
+    slope.append(s)
+    intercept.append(i)
+    
     #print r_value * r_value
     fitLine = predict(X)
     plt.plot(X, fitLine, c='r')
     plt.show()
+
+linear_prediction = []
+linear_prediction = pd.DataFrame(linear_prediction)
+linear_prediction["Name"] = colonne
+linear_prediction["Slope"] = slope
+linear_prediction["Intercept"] = intercept
+
+####### TEST PHASE ############
+
+
 
 
