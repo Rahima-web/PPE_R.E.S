@@ -19,7 +19,7 @@ for i in range(len(x)):
     dt.append(datetime.fromisoformat(x[i]).timestamp())
 
 training["time_nb"] = dt
-print(training)
+
 
 #Initialisation of X and y
 X = training["time_nb"]
@@ -36,11 +36,14 @@ colonne = []
 slope = []   #Stock all the slopes of the different variables
 intercept = []   #Stock all the intercepts of the different variables
 
+training = training.drop("time_nb",axis=1)
 for col in training:
     Y = training[col]
     axes = plt.axes()
     axes.grid()
     plt.scatter(X,Y)
+    plt.xlabel('time in integer')
+    plt.ylabel(col)
     s, i, r_value, p_value, std_err = stats.linregress(X, Y)
     colonne.append(col)
     slope.append(s)
@@ -56,9 +59,39 @@ linear_prediction = pd.DataFrame(linear_prediction)
 linear_prediction["Name"] = colonne
 linear_prediction["Slope"] = slope
 linear_prediction["Intercept"] = intercept
-
+linear_prediction = linear_prediction.set_index("Name")
 ####### TEST PHASE ############
 
+test_phase = f_test.copy()
+time = []
+output = []
+output = pd.DataFrame(output)
+o = []
+x = test_phase.index
 
+for i in range(len(x)):
+    time.append(datetime.fromisoformat(x[i]).timestamp())
+
+output["time_nb"] = time
+
+def predict_test(x,s,i):
+    return s * x + i
+
+for j in test_phase:
+    s = linear_prediction["Slope"][j]
+    i = linear_prediction["Intercept"][j]
+    for k in range(len(test_phase[j])):
+        o.append(predict_test(output["time_nb"][k], s, i))
+    output[j] = o
+    o = []
+    
+    
+output["Date"] = test_phase.index
+output = output.set_index("Date")
+output = output.drop("time_nb", axis=1)
+
+final_output = [f_train, output]
+#Final dataframe containing training values and test values
+final_output = pd.concat(final_output)
 
 
