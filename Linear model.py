@@ -11,6 +11,7 @@ import pandas as pd
 from data_preparation import f_train,f_test
 from scipy import stats
 from datetime import datetime
+import numpy as np
 
 training = f_train.copy()
 dt = []
@@ -98,3 +99,20 @@ final_output = pd.concat(final_output)
 for col in final_output.columns:
     final_output.plot( y=col, marker='.', figsize=(15,7))
 
+########## Calcul MSE ###########
+
+n = 95
+
+def error(y,yhat):
+    s= 0
+    for i in range(n):
+        s += (y[i] - yhat[i])**2
+    return np.sqrt(1/n * s)
+
+result_linear = []
+for col in f_test:
+    result_linear.append([col, error(f_test[col], output[col])])
+
+mse_linear = pd.DataFrame(result_linear, columns = ["Name", "Error"])
+mse_linear = mse_linear.set_index("Name")
+print(mse_linear)
