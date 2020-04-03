@@ -85,13 +85,16 @@ for j in test_phase:
     output[j] = o
     o = []
     
-    
+   
 output["Date"] = test_phase.index
 output = output.set_index("Date")
+X_test = output["time_nb"]
 output = output.drop("time_nb", axis=1)
 
 final_output = [f_train, output]
 #Final dataframe containing training values and test values
 final_output = pd.concat(final_output)
 
+for col in final_output.columns:
+    final_output.plot( y=col, marker='.', figsize=(15,7))
 
